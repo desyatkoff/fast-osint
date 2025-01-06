@@ -3,6 +3,17 @@
 ## Description
 FastOSINT is a pretty good Open Source Intelligence CLI tool
 
+## Table of Contents
+| № | Link |
+| --- | --- |
+| 1 | [Title](#fastosint) |
+| 2 | [Description](#description) |
+| 3 | [Table of Contents](#) |
+| 4 | [Requirements](#requirements) |
+| 5 | [Installation](#installation) |
+| 6 | [Features](#features) |
+| 7 | [Screenshots](#screenshots) |
+
 ## Requirements
 - [Rich](https://pypi.org/project/rich/)
 - [Requests](https://pypi.org/project/requests/)
