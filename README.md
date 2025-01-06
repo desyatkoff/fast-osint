@@ -55,3 +55,5 @@ FastOSINT **can find** info about ...:
 
 ## Screenshots
 ![1](https://github.com/user-attachments/assets/040e3e3e-248c-4c32-8858-dd4d866034e6)
+![2](https://github.com/user-attachments/assets/9a03b5e8-8bd6-4f2f-95e9-fd7b89cbf926)
+
