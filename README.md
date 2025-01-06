@@ -8,6 +8,33 @@ FastOSINT is a pretty good Open Source Intelligence CLI tool
 - [Requests](https://pypi.org/project/requests/)
 - [BeautifulSoup4](https://pypi.org/project/beautifulsoup4/)
 
+## Installation
+1. Clone repository
+```
+git clone https://github.com/desyatkoff/fast-osint.git
+```
+2. Go to the repository directory
+```
+cd fast-osint/
+```
+3. Create Python virtual environment
+```
+python -m venv .venv
+```
+4. Activate the virtual environment
+```
+source .venv/bin/activate
+```
+5. Install required libraries
+```
+pip install -r requirements.txt
+```
+6. Launch FastOSINT
+```
+python main.py
+```
+7. Done! :)
+
 ## Features
 FastOSINT **can find** info about ...:
 
