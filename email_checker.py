@@ -7,20 +7,24 @@ import config
 def github(email):
     try:
         response = requests.get(
-            url = f"https://api.github.com/search/users?q={email}+in:email",
+            url = "https://api.github.com/search/users",
+            params = {
+                "q" : email,
+                "in": "email"
+            },
             headers = config.HEADERS
         )
 
         if response.status_code == 200:
-            result = response.json()
+            data = response.json()
 
-            if result["total_count"] > 0:
-                for user in result["items"]:
+            if data["total_count"] > 0:
+                for user in data["items"]:
                     rich.print(
 f"""
 [ GITHUB RESULTS ]
 
-[green]->[/green] GitHub (github.com) account found
+[green]-> GitHub (github.com) account found[/green]
 
 | DETAILS
 |
@@ -34,42 +38,14 @@ f"""
 |        [green]->[/green] https://github.com/{user["login"]}
 
 [ --- ]
-
 """
                     )
             else:
-                rich.print(
-"""
-[ GITHUB RESULTS ]
-
-[red]-> GitHub (github.com) account not found![/red]
-
-[ --- ]
-
-"""
-                )
+                rich.print("[yellow]-> GitHub (github.com) account not found![/yellow]")
         else:
-            rich.print(
-f"""
-[ GITHUB RESULTS ]
-
-[red]-> GitHub (github.com) account not found! (error {response.status_code})[/red]
-
-[ --- ]
-
-"""
-            )
+            rich.print(f"[red]-> GitHub (github.com) account not found! Error {response.status_code}[/red]")
     except Exception as e:
-        rich.print(
-f"""
-[ GITHUB RESULTS ]
-
-[red]-> GitHub (github.com) account not found! (raised {e})[/red]
-
-[ --- ]
-
-"""
-        )
+        rich.print(f"[red]-> GitHub (github.com) account not found! Raised error: {e}[/red]")
 
 def pinterest(email):
     try:
@@ -90,51 +66,31 @@ def pinterest(email):
 """
 [ PINTEREST RESULTS ]
 
-[green]->[/green] Pinterest (www.pinterest.com) account found
+[green]-> Pinterest (www.pinterest.com) account found[/green]
+
+| DETAILS
+|
+|    None
 
 [ --- ]
-
 """
                 )
             else:
-                rich.print(
-"""
-[ PINTEREST RESULTS ]
-
-[red]-> Pinterest (www.pinterest.com) account not found![/red]
-
-[ --- ]
-
-"""
-                )
+                rich.print("[yellow]-> Pinterest (www.pinterest.com) account not found![/yellow]")
         else:
-            rich.print(
-"""
-[ PINTEREST RESULTS ]
-
-[red]-> Pinterest (www.pinterest.com) account not found![/red]
-
-[ --- ]
-
-"""
-            )
+            rich.print("[yellow]-> Pinterest (www.pinterest.com) account not found![/yellow]")
 
     except Exception as e:
-        rich.print(
-f"""
-[ PINTEREST RESULTS ]
-
-[red]-> Pinterest (www.pinterest.com) account not found! (raised {e})[/red]
-
-[ --- ]
-
-"""
-        )
+        rich.print(f"[red]-> Pinterest (www.pinterest.com) account not found! Raised error: {e})[/red]")
 
 def spotify(email):
     try:
         response = requests.get(
-            url = f"https://spclient.wg.spotify.com/signup/public/v1/account?validate=1&email={email}",
+            url = "https://spclient.wg.spotify.com/signup/public/v1/account",
+            params = {
+                "validate": 1,
+                "email": email
+            },
             headers = config.HEADERS
         )
 
@@ -146,51 +102,29 @@ def spotify(email):
 """
 [ SPOTIFY RESULTS ]
 
-[green]->[/green] Spotify (spotify.com) account found
+[green]-> Spotify (spotify.com) account found[/green]
 
+| DETAILS
+|
+|    None
 [ --- ]
-
 """
                 )
             else:
-                rich.print(
-"""
-[ SPOTIFY RESULTS ]
-
-[red]-> Spotify (spotify.com) account not found![/red]
-
-[ --- ]
-
-"""
-                )
+                rich.print("[yellow]-> Spotify (spotify.com) account not found![/yellow]")
         else:
-            rich.print(
-"""
-[ SPOTIFY RESULTS ]
-
-[red]-> Spotify (spotify.com) account not found![/red]
-
-[ --- ]
-
-"""
-            )
+            rich.print("[yellow]-> Spotify (spotify.com) account not found![/yellow]")
 
     except Exception as e:
-        rich.print(
-f"""
-[ SPOTIFY RESULTS ]
-
-[red]-> Spotify (spotify.com) account not found! (raised {e})[/red]
-
-[ --- ]
-
-"""
-        )
+        rich.print(f"[red]-> Spotify (spotify.com) account not found! Raised error: {e}[/red]")
 
 def twitter(email):
     try:
         response = requests.get(
-            url = f"https://api.twitter.com/i/users/email_available.json?email={email}",
+            url = "https://api.twitter.com/i/users/email_available.json",
+            params = {
+                "email": email
+            },
             headers = config.HEADERS
         )
 
@@ -202,73 +136,46 @@ def twitter(email):
 """
 [ TWITTER RESULTS ]
 
-[green]->[/green] Twitter (twitter.com) account found
+[green]-> Twitter (twitter.com) account found[/green]
+
+| DETAILS
+|
+|    None
 
 [ --- ]
-
 """
                 )
             else:
-                rich.print(
-"""
-[ TWITTER RESULTS ]
-
-[red]-> Twitter (twitter.com) account not found![/red]
-
-[ --- ]
-
-"""
-                )
+                rich.print("[yellow]-> Twitter (twitter.com) account not found![/yellow]")
     except Exception as e:
-        rich.print(
-f"""
-[ TWITTER RESULTS ]
-
-[red]-> Twitter (twitter.com) account not found! (raised {e})[/red]
-
-[ --- ]
-
-"""
-        )
+        rich.print(f"[red]-> Twitter (twitter.com) account not found! Raised {e}[/red]")
 
 def chess(email):
     try:
         response = requests.get(
-            url = f"https://www.chess.com/callback/email/available?email={email}",
+            url = "https://www.chess.com/callback/email/available",
+            params = {
+                "email": email
+            },
             headers = config.HEADERS
         )
         data = response.json()
 
         if data.get("isEmailAvailable") == True:
-            rich.print(
-"""
-[ CHESS RESULTS ]
-
-[red]-> Chess (www.chess.com) account not found![/red]
-
-[ --- ]
-
-"""
-            )
+            rich.print("[yellow]-> Chess (www.chess.com) account not found![/yellow]")
         elif data.get("isEmailAvailable") == False:
             rich.print(
 """
 [ CHESS RESULTS ]
 
-[green]->[/green] Chess (www.chess.com) account found
+[green]-> Chess (www.chess.com) account found[/green]
+
+| DETAILS
+|
+|    None
 
 [ --- ]
-
 """
             )
     except Exception as e:
-        rich.print(
-f"""
-[ CHESS RESULTS ]
-
-[red]-> Chess (chess.com) account not found! (raised {e})[/red]
-
-[ --- ]
-
-"""
-        )
+        rich.print(f"[red]-> Chess (chess.com) account not found! (raised {e})[/red]")
