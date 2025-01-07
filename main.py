@@ -86,27 +86,32 @@ You want to get information about ...?
         print("\n")
 
         if len(self.email) > 0:
-            rich.print(f"Searching info about [blue]`{self.email}`[/blue]...")
+            rich.print(f"Searching info about [blue]`{self.email}`[/blue]...\n")
 
             time.sleep(1)
 
-            rich.print("Checking [bold]GitHub...[/bold]\n")
+            rich.print("Checking [bold]github.com...[/bold]\n")
             email_checker.github(
                 email = self.email
             )
 
-            rich.print("Checking [bold]Pinterest...[/bold]\n")
+            rich.print("Checking [bold]pinterest.com...[/bold]\n")
             email_checker.pinterest(
                 email = self.email
             )
 
-            rich.print("Checking [bold]Spotify...[/bold]\n")
+            rich.print("Checking [bold]spotify.com...[/bold]\n")
             email_checker.spotify(
                 email = self.email
             )
 
-            rich.print("Checking [bold]Twitter...[/bold]\n")
+            rich.print("Checking [bold]twitter.com...[/bold]\n")
             email_checker.twitter(
+                email = self.email
+            )
+
+            rich.print("Checking [bold]chess.com...[/bold]\n")
+            email_checker.chess(
                 email = self.email
             )
         else:
