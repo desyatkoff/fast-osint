@@ -9,6 +9,7 @@ def check_phone(phone):
         url = f"http://phone-number-api.com/json/?number={phone}",
         headers = config.HEADERS
     )
+    data = response.json()
 
 
     if response.status_code == 200:
@@ -19,7 +20,21 @@ f"""
 [green]->[/green] Found some info
 
 | DETAILS
-{response.json()}
+|
+|    Is valid?:
+|        [green]->[/green] {data["numberValid"]}
+|
+|    Number type:
+|        [green]->[/green] {data["numberType"]}
+|
+|    Country:
+|        [green]->[/green] {data["countryName"]}
+|
+|    Region:
+|        [green]->[/green] {data["regionName"]}
+|
+|    City:
+|        [green]->[/green] {data["city"]}
 
 [ --- ]
 
