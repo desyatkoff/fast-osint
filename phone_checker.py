@@ -6,7 +6,10 @@ import config
 
 def check_phone(phone):
     response = requests.get(
-        url = f"http://phone-number-api.com/json/?number={phone}",
+        url = f"http://phone-number-api.com/json/",
+        params = {
+            "number": phone
+        },
         headers = config.HEADERS
     )
     data = response.json()
@@ -17,7 +20,7 @@ def check_phone(phone):
 f"""
 [ PHONE NUMBER RESULTS ]
 
-[green]->[/green] Found some info
+[green]-> Found some info[/green]
 
 | DETAILS
 |
@@ -41,13 +44,4 @@ f"""
 """
         )
     else:
-        rich.print(
-f"""
-[ PHONE NUMBER RESULTS ]
-
-[red]-> Information about `{phone}` not found![/red]
-
-[ --- ]
-
-"""
-        )
+        rich.print("[yellow]-> Couldn't find any information![/yellow]")
