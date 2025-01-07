@@ -17,7 +17,7 @@ def check_ip(ip):
 f"""
 [ IP RESULTS ]
 
-[green]->[/green] Found some info
+[green]-> Found some info[/green]
 
 | DETAILS
 |
@@ -47,13 +47,4 @@ f"""
 """
         )
     else:
-        rich.print(
-"""
-[ IP RESULTS ]
-
-[red]-> Couldn't find any information[/red]
-
-[ --- ]
-
-"""
-        )
+        rich.print("[yellow]-> Couldn't find any information![/yellow]")
