@@ -3,12 +3,15 @@
 ## Description
 FastOSINT is a pretty good Open Source Intelligence CLI tool
 
+> [!WARNING]
+> You should not use this for any illegal activities. Educational purposes only!
+
 ## Table of Contents
 | № | Link |
 | --- | --- |
 | 1 | [Title](#fastosint) |
 | 2 | [Description](#description) |
-| 3 | [Table of Contents](#) |
+| 3 | [Table of Contents](#table%20of%20contents) |
 | 4 | [Requirements](#requirements) |
 | 5 | [Installation](#installation) |
 | 6 | [Features](#features) |
@@ -50,10 +53,26 @@ python main.py
 FastOSINT **can find** info about ...:
 
 1. Email
-2. Phone number
-3. Internet Protocol address (IPv4)
+   - GitHub
+   - Pinterest
+   - Spotify
+   - Twitter
+   - Chess
+3. Phone number
+   - Number validity
+   - Number type
+   - Country
+   - Region
+   - City
+5. Internet Protocol address (IPv4)
+   - IP
+   - Country
+   - Region
+   - City
+   - Location (latitude and longitude)
+   - Internet Service Provider
+   - Organization
 
 ## Screenshots
 ![1](https://github.com/user-attachments/assets/040e3e3e-248c-4c32-8858-dd4d866034e6)
 ![2](https://github.com/user-attachments/assets/9a03b5e8-8bd6-4f2f-95e9-fd7b89cbf926)
-
