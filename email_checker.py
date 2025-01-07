@@ -20,7 +20,7 @@ def github(email):
 f"""
 [ GITHUB RESULTS ]
 
-[green]->[/green] GitHub account found
+[green]->[/green] GitHub (github.com) account found
 
 | DETAILS
 |
@@ -42,7 +42,7 @@ f"""
 """
 [ GITHUB RESULTS ]
 
-[red]-> Account not found![/red]
+[red]-> GitHub (github.com) account not found![/red]
 
 [ --- ]
 
@@ -53,7 +53,7 @@ f"""
 f"""
 [ GITHUB RESULTS ]
 
-[red]-> Account not found! (Error {response.status_code})[/red]
+[red]-> GitHub (github.com) account not found! (error {response.status_code})[/red]
 
 [ --- ]
 
@@ -64,7 +64,7 @@ f"""
 f"""
 [ GITHUB RESULTS ]
 
-[red]-> Account not found! (raised {e})[/red]
+[red]-> GitHub (github.com) account not found! (raised {e})[/red]
 
 [ --- ]
 
@@ -85,12 +85,12 @@ def pinterest(email):
         if response.status_code == 200:
             data = response.json()
 
-            if data["resource_response"]["data"]:
+            if not data["resource_response"]["data"]:
                 rich.print(
 """
 [ PINTEREST RESULTS ]
 
-[green]->[/green] Pinterest account found
+[green]->[/green] Pinterest (www.pinterest.com) account found
 
 [ --- ]
 
@@ -101,7 +101,7 @@ def pinterest(email):
 """
 [ PINTEREST RESULTS ]
 
-[red]-> Account not found![/red]
+[red]-> Pinterest (www.pinterest.com) account not found![/red]
 
 [ --- ]
 
@@ -112,7 +112,7 @@ def pinterest(email):
 """
 [ PINTEREST RESULTS ]
 
-[red]-> Account not found![/red]
+[red]-> Pinterest (www.pinterest.com) account not found![/red]
 
 [ --- ]
 
@@ -124,7 +124,7 @@ def pinterest(email):
 f"""
 [ PINTEREST RESULTS ]
 
-[red]-> Account not found! (raised {e})[/red]
+[red]-> Pinterest (www.pinterest.com) account not found! (raised {e})[/red]
 
 [ --- ]
 
@@ -146,7 +146,7 @@ def spotify(email):
 """
 [ SPOTIFY RESULTS ]
 
-[green]->[/green] Spotify account found
+[green]->[/green] Spotify (spotify.com) account found
 
 [ --- ]
 
@@ -157,7 +157,7 @@ def spotify(email):
 """
 [ SPOTIFY RESULTS ]
 
-[red]-> Account not found![/red]
+[red]-> Spotify (spotify.com) account not found![/red]
 
 [ --- ]
 
@@ -168,7 +168,7 @@ def spotify(email):
 """
 [ SPOTIFY RESULTS ]
 
-[red]-> Account not found![/red]
+[red]-> Spotify (spotify.com) account not found![/red]
 
 [ --- ]
 
@@ -180,7 +180,7 @@ def spotify(email):
 f"""
 [ SPOTIFY RESULTS ]
 
-[red]-> Account not found! (raised {e})[/red]
+[red]-> Spotify (spotify.com) account not found! (raised {e})[/red]
 
 [ --- ]
 
@@ -202,7 +202,7 @@ def twitter(email):
 """
 [ TWITTER RESULTS ]
 
-[green]->[/green] Twitter account found
+[green]->[/green] Twitter (twitter.com) account found
 
 [ --- ]
 
@@ -213,7 +213,7 @@ def twitter(email):
 """
 [ TWITTER RESULTS ]
 
-[red]-> Account not found![/red]
+[red]-> Twitter (twitter.com) account not found![/red]
 
 [ --- ]
 
@@ -224,7 +224,49 @@ def twitter(email):
 f"""
 [ TWITTER RESULTS ]
 
-[red]-> Account not found! (raised {e})[/red]
+[red]-> Twitter (twitter.com) account not found! (raised {e})[/red]
+
+[ --- ]
+
+"""
+        )
+
+def chess(email):
+    try:
+        response = requests.get(
+            url = f"https://www.chess.com/callback/email/available?email={email}",
+            headers = config.HEADERS
+        )
+        data = response.json()
+
+        if data.get("isEmailAvailable") == True:
+            rich.print(
+"""
+[ CHESS RESULTS ]
+
+[red]-> Chess (www.chess.com) account not found![/red]
+
+[ --- ]
+
+"""
+            )
+        elif data.get("isEmailAvailable") == False:
+            rich.print(
+"""
+[ CHESS RESULTS ]
+
+[green]->[/green] Chess (www.chess.com) account found
+
+[ --- ]
+
+"""
+            )
+    except Exception as e:
+        rich.print(
+f"""
+[ CHESS RESULTS ]
+
+[red]-> Chess (chess.com) account not found! (raised {e})[/red]
 
 [ --- ]
 
