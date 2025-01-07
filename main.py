@@ -1,10 +1,7 @@
 import os
 import time
-import random
 
-import bs4
 import rich
-import requests
 
 import config
 import email_checker
@@ -90,30 +87,35 @@ You want to get information about ...?
 
             time.sleep(1)
 
-            rich.print("Checking [bold]github.com...[/bold]\n")
+            rich.print("Checking [bold]github.com...[/bold]")
             email_checker.github(
                 email = self.email
             )
+            print("\n")
 
-            rich.print("Checking [bold]pinterest.com...[/bold]\n")
+            rich.print("Checking [bold]pinterest.com...[/bold]")
             email_checker.pinterest(
                 email = self.email
             )
+            print("\n")
 
-            rich.print("Checking [bold]spotify.com...[/bold]\n")
+            rich.print("Checking [bold]spotify.com...[/bold]")
             email_checker.spotify(
                 email = self.email
             )
+            print("\n")
 
-            rich.print("Checking [bold]twitter.com...[/bold]\n")
+            rich.print("Checking [bold]twitter.com...[/bold]")
             email_checker.twitter(
                 email = self.email
             )
+            print("\n")
 
-            rich.print("Checking [bold]chess.com...[/bold]\n")
+            rich.print("Checking [bold]chess.com...[/bold]")
             email_checker.chess(
                 email = self.email
             )
+            print("\n")
         else:
             rich.print("[red]Missing value![/red]")
 
@@ -128,11 +130,11 @@ You want to get information about ...?
         self.menu()
 
     def check_phone(self):
-        self.phone = input("Enter phone number (for example: +123456789)\n: ")
+        self.phone = input("Enter phone number\n: ")
         print("\n")
 
         if len(self.phone) > 0:
-            rich.print(f"Searching info about [blue]`{self.phone}`[/blue]...")
+            rich.print(f"Searching info about [blue]`{self.phone}`[/blue]...\n")
 
             phone_checker.check_phone(
                 phone = self.phone
@@ -156,7 +158,7 @@ You want to get information about ...?
 
 
         if len(self.ip) > 0:
-            rich.print(f"Searching info about [blue]`{self.ip}`[/blue]...")
+            rich.print(f"Searching info about [blue]`{self.ip}`[/blue]...\n")
 
             ip_checker.check_ip(
                 ip = self.ip
